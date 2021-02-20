@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: dcash-user
+  profiles:
+    active: @activatedProperties@
+hibernate:
+  types:
+    print:
+      banner: false
