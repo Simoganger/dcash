@@ -1,0 +1,24 @@
+package com.dreamcashgroup.dcash.common.exception;
+
+public enum EnumErrorCode {
+
+    ERROR_JWT_SIGNATURE_INVALID("DCASH_ERRJWT00001"),
+    ERROR_JWT_TOKEN_INVALID("DCASH_ERRJWT00002"),
+    ERROR_JWT_TOKEN_EXPIRED("DCASH_ERRJWT00003"),
+    ERROR_JWT_TOKEN_UNSUPPORTED("DCASH_ERRJWT00004"),
+    ERROR_JWT_TOKEN_NOTFOUND("DCASH_ERRJWT00005"),
+    ERROR_JWT_TOKEN_EMPTY_CLAIMS("DCASH_ERRJWT00006"),
+    ERROR_JWT_TOKEN_NO_SUCH_ALGORITHM("DCASH_ERRJWT00007"),
+    ERROR_JWT_TOKEN_INVALID_KEY_SPEC("DCASH_ERRJWT0008"),
+    ERROR_DB_ITEM_NOTFOUND("DCASH_ERRDB00001");
+
+    private String  code;
+
+    EnumErrorCode(String code) {
+        this.code = code;
+    }
+
+    public String getCode() {
+        return code;
+    }
+}
