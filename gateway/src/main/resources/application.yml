@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: dcasg-gateway
+  profiles:
+    active: @activatedProperties@
+zuul:
+  # exclude Authorization from sensitive headers
+  sensitiveHeaders: Cookie,Set-Cookie
+  ignoredServices: '*'

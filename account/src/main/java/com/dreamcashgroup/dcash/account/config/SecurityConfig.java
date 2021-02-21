@@ -1,4 +1,4 @@
-package com.dreamcashgroup.dcash.user.config;
+package com.dreamcashgroup.dcash.account.config;
 
 import com.dreamcashgroup.dcash.common.security.jwt.JwtEntryPoint;
 import com.dreamcashgroup.dcash.common.security.jwt.JwtTokenFilter;
@@ -67,8 +67,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout().disable()
                 .formLogin().disable()
                 .authorizeRequests()
-                .antMatchers("/common/**", "/auth/**")
-                .permitAll()
                 .antMatchers("/",
                         "/error",
                         "/favicon.ico",
@@ -85,7 +83,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .anyRequest()
                 .authenticated()
-                //.permitAll()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(unAuthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);

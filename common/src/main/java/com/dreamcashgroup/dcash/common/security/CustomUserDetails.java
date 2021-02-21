@@ -1,4 +1,4 @@
-package com.dreamcashgroup.dcash.user.security;
+package com.dreamcashgroup.dcash.common.security;
 
 import com.dreamcashgroup.dcash.model.entity.Users;
 import com.fasterxml.jackson.annotation.JsonIgnore;

@@ -1,4 +1,4 @@
-package com.dreamcashgroup.dcash.user.config;
+package com.dreamcashgroup.dcash.account.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,7 +26,7 @@ public class SwaggerConfig {
 
     private ApiInfo metaInfo() {
         return new ApiInfoBuilder()
-                .description("DCash User Service")
+                .description("DCash Account Service")
                 .title("DCash API v1")
                 .version("1.0")
                 .build();

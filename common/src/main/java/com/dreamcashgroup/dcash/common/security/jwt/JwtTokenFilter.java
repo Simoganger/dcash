@@ -1,4 +1,4 @@
-package com.dreamcashgroup.dcash.user.security.jwt;
+package com.dreamcashgroup.dcash.common.security.jwt;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

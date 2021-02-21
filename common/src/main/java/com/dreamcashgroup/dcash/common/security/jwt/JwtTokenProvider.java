@@ -1,6 +1,8 @@
-package com.dreamcashgroup.dcash.user.security.jwt;
+package com.dreamcashgroup.dcash.common.security.jwt;
 
-import com.dreamcashgroup.dcash.user.security.CustomUserDetails;
+import com.dreamcashgroup.dcash.common.exception.DCashCommonException;
+import com.dreamcashgroup.dcash.common.exception.EnumErrorCode;
+import com.dreamcashgroup.dcash.common.security.CustomUserDetails;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,22 +35,27 @@ public class JwtTokenProvider {
                 .compact();
     }
 
-    public boolean validateJwtToken(String authToken) {
+    public boolean validateJwtToken(String authToken) throws DCashCommonException {
         try {
+            logger.debug("Parsing token with TokenProvider");
             Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authToken);
             return true;
         } catch (SignatureException e) {
             logger.error("Invalid JWT signature -> Message: {} ", e);
+            throw new DCashCommonException(EnumErrorCode.ERROR_JWT_SIGNATURE_INVALID, "Token");
         } catch (MalformedJwtException e) {
             logger.error("Invalid JWT token -> Message: {}", e);
+            throw new DCashCommonException(EnumErrorCode.ERROR_JWT_TOKEN_INVALID, "Token");
         } catch (ExpiredJwtException e) {
             logger.error("Expired JWT token -> Message: {}", e);
+            throw new DCashCommonException(EnumErrorCode.ERROR_JWT_TOKEN_EXPIRED, "Token");
         } catch (UnsupportedJwtException e) {
             logger.error("Unsupported JWT token -> Message: {}", e);
+            throw new DCashCommonException(EnumErrorCode.ERROR_JWT_TOKEN_UNSUPPORTED, "Token");
         } catch (IllegalArgumentException e) {
             logger.error("JWT claims string is empty -> Message: {}", e);
+            throw new DCashCommonException(EnumErrorCode.ERROR_JWT_TOKEN_EMPTY_CLAIMS, "Token");
         }
-        return false;
     }
 
     public String getUsernameFromJwtToken(String token) {

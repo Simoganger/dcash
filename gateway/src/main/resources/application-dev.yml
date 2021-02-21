@@ -1,0 +1,59 @@
+# Server configurations
+server:
+  port: 8080
+  url: http://localhost:8080/gateway
+
+# Spring configurations
+spring :
+  devtools:
+    restart:
+      enabled: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/dcashdb
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+    initialization-mode: never #never, always
+  jpa:
+    datebase: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: false
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update #update, create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+# App global configurations
+app:
+  security:
+    jwt:
+      header: Authorization
+      prefix: Bearer
+      expiration: 86400
+      loginUrl: /login
+      refresh:
+        expiration: 8640000000 #  refreshToken never expire 100 000 days
+      secret: 0A7A690F19001C887DEB108AE40C54717E740385243437A863569C91BF8AC99B
+    encryption:
+      algorithm: AES
+      key: 0A7A690F19001C887DEB10
+
+# Zuul configurations
+zuul:
+  routes:
+    user-service:
+      path: /user/**
+      url: http://localhost:8081/user/
+      stripPrefix: true
+      serviceId: user-service
+    user-auth-service:
+      path: /auth/**
+      url: http://localhost:8081/auth/
+      stripPrefix: true
+      serviceId: user-service
+    account-service:
+      path: /account/**
+      url: http://localhost:8082/account/
+      stripPrefix: true
+      serviceId: account-service
