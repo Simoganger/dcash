@@ -8,12 +8,12 @@
 		<version>2.2.6.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.dreamcashgroup.dcash.user</groupId>
-	<artifactId>user</artifactId>
+	<groupId>com.dreamcashgroup.dcash.account</groupId>
+	<artifactId>account</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>user</name>
+	<name>account</name>
 	<packaging>jar</packaging>
-	<description>DCash User Service</description>
+	<description>DCash Account Project</description>
 	<properties>
 		<java.version>1.8</java.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -85,6 +85,11 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -95,6 +100,7 @@
 			</plugin>
 		</plugins>
 	</build>
+	
 	<profiles>
 		<profile>
 			<id>dev</id>

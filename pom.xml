@@ -23,6 +23,8 @@
 		<module>model</module>
 		<module>common</module>
 		<module>user</module>
+		<module>account</module>
+		<module>gateway</module>
 	</modules>
 
 	<build>
