@@ -143,4 +143,18 @@ public class CustomerServiceImpl implements CustomerService {
     public List<Customer> getAllCustomers() {
         return customerRepository.findAll();
     }
+
+    /**
+     * Récupérer le client connecté
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public Customer getCurrentCustomer(String id) throws DCashDBItemNotFoundException {
+        Users user = userService.findById(id);
+        return customerRepository.findByUser(user)
+                .orElseThrow(()-> new DCashDBItemNotFoundException(EnumErrorCode.ERROR_DB_ITEM_NOTFOUND, Customer.class.getSimpleName(), "id", id));
+
+    }
 }

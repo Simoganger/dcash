@@ -31,9 +31,18 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/font-awesome/css/font-awesome.min.css",
+              "src/styles.scss",
+              "node_modules/sweetalert2/src/sweetalert2.scss",
+              "node_modules/bootstrap4-toggle/css/bootstrap4-toggle.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "node_modules/sweetalert2/dist/sweetalert2.js",
+              "node_modules/bootstrap4-toggle/js/bootstrap4-toggle.min.js"
+            ]
           },
           "configurations": {
             "production": {

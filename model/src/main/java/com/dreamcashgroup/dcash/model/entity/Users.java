@@ -1,5 +1,7 @@
 package com.dreamcashgroup.dcash.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -9,6 +11,8 @@ public class Users extends Model{
 
     @Column(unique = true)
     private String username;
+
+    @JsonIgnore
     private String password;
     private boolean active;
 

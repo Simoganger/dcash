@@ -52,4 +52,5 @@ public interface UserService {
      * @throws DCashDBItemNotFoundException
      */
     void delete(String id) throws DCashDBItemNotFoundException;
+
 }

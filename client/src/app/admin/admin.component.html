@@ -1,0 +1,27 @@
+<div class="d-flex" id="wrapper">
+    <div id="page-content-wrapper" style="margin-bottom: 15%;">
+      <nav class="navbar navbar-expand-lg navbar-dark border-bottom" style="background-color: #23416E;">
+        <span class="brand-name"> <img src="assets/img/dcash-logo.png" alt="" class="logo"> </span>
+  
+        <button class="navbar-toggler" type="button" data-toggle="collapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item" ngbDropdown>
+              <a class="nav-link link"> <img class="avatar-image"
+                  src="assets/img/user.png" alt=""> <span *ngIf="currentUser" class="ml-1"> {{currentUser.username}} </span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link" (click)="logout()"> <i class="fa fa-sign-out"></i> Déconnexion</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div class="container-fluid">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>

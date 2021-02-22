@@ -1,5 +1,6 @@
 package com.dreamcashgroup.dcash.account.service;
 
+import com.dreamcashgroup.dcash.account.dto.AccountDto;
 import com.dreamcashgroup.dcash.account.dto.CheckingAccountDto;
 import com.dreamcashgroup.dcash.account.dto.SavingAccountDto;
 import com.dreamcashgroup.dcash.model.entity.CheckingAccount;
@@ -9,17 +10,17 @@ public interface AccountService {
 
     /**
      * Créer un compte chèque
-     * @param checkingAccountDto
+     * @param accountDto
      * @return
      */
-    CheckingAccount createCheckingAccount(CheckingAccountDto checkingAccountDto);
+    CheckingAccount createCheckingAccount(AccountDto accountDto);
 
     /**
      * Créer un compte d'épargne
-     * @param savingAccountDto
+     * @param accountDto
      * @return
      */
-    SavingAccount createSavingAccount(SavingAccountDto savingAccountDto);
+    SavingAccount createSavingAccount(AccountDto accountDto);
 
     /**
      * Enregistrer un compte chèque

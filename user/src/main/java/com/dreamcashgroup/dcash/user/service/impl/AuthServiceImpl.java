@@ -86,10 +86,11 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public boolean verifySecondLoginRequirement(String userId) {
         Optional<Users> userOptional = userService.getById(userId);
-        if(userOptional.isPresent() && userOptional.get().isAdmin()){
+       /* if(userOptional.isPresent() && userOptional.get().isAdmin()){
             return false;
         }else{
             return true;
-        }
+        }*/
+       return false;
     }
 }

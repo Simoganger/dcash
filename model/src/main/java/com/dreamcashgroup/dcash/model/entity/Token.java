@@ -19,7 +19,6 @@ public class Token extends Model{
     @Enumerated(EnumType.STRING)
     private EnumTokenStatus status;
 
-    @Temporal(TemporalType.TIMESTAMP)
     private Instant expireAt;
 
     @OneToOne(targetEntity = Users.class)

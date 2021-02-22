@@ -1,5 +1,6 @@
 package com.dreamcashgroup.dcash.account.service.impl;
 
+import com.dreamcashgroup.dcash.account.dto.AccountDto;
 import com.dreamcashgroup.dcash.account.dto.CheckingAccountDto;
 import com.dreamcashgroup.dcash.account.dto.SavingAccountDto;
 import com.dreamcashgroup.dcash.account.repository.CheckingAccountRepository;
@@ -22,22 +23,22 @@ public class AccountServiceImpl implements AccountService {
     /**
      * Créer un compte chèque
      *
-     * @param checkingAccountDto
+     * @param accountDto
      * @return
      */
     @Override
-    public CheckingAccount createCheckingAccount(CheckingAccountDto checkingAccountDto) {
+    public CheckingAccount createCheckingAccount(AccountDto accountDto) {
         return null;
     }
 
     /**
      * Créer un compte d'épargne
      *
-     * @param savingAccountDto
+     * @param accountDto
      * @return
      */
     @Override
-    public SavingAccount createSavingAccount(SavingAccountDto savingAccountDto) {
+    public SavingAccount createSavingAccount(AccountDto accountDto) {
         return null;
     }
 

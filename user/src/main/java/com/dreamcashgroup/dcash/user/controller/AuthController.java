@@ -62,7 +62,7 @@ public class AuthController {
      * @param secondLoginDto
      * @return
      */
-    @PostMapping("/verify/code")
+    @PostMapping("/verify/login/code")
     public RestResponse login (@RequestBody SecondLoginDto secondLoginDto) {
         try{
             Optional<Authentication> authenticationOpt = authService.authenticateUser(secondLoginDto.getUsername(), secondLoginDto.getPassword());

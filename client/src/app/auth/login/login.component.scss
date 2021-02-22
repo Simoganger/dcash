@@ -1,0 +1,28 @@
+.imageLogo{
+   // background: url(../../../assets/img/logoPrincipal.png) center;
+}
+
+.position-last-block{
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    bottom: 5px;
+}
+
+.logo{
+    width: 50px;
+    height: 50px;
+}
+
+.login-panel{
+    height: 500px; 
+    background-color: #fff; 
+    border: 1px solid #f5f5f5;
+    border-radius: 5px;
+}
+
+.forget-password-link{
+    color: #002060 !important;
+}

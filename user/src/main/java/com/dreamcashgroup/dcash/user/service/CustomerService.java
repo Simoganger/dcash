@@ -74,4 +74,11 @@ public interface CustomerService {
      * @return
      */
     List<Customer> getAllCustomers();
+
+    /**
+     * Récupérer le client connecté
+     * @param id
+     * @return
+     */
+    Customer getCurrentCustomer(String id) throws DCashDBItemNotFoundException;
 }
