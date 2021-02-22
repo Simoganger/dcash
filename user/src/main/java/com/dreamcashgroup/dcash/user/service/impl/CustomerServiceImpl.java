@@ -1,5 +1,6 @@
 package com.dreamcashgroup.dcash.user.service.impl;
 
+import com.dreamcashgroup.dcash.common.exception.DCashDBItemAlreadyExistException;
 import com.dreamcashgroup.dcash.common.exception.DCashDBItemNotFoundException;
 import com.dreamcashgroup.dcash.common.exception.EnumErrorCode;
 import com.dreamcashgroup.dcash.model.entity.Customer;
@@ -7,21 +8,23 @@ import com.dreamcashgroup.dcash.model.entity.Users;
 import com.dreamcashgroup.dcash.user.dto.CustomerDto;
 import com.dreamcashgroup.dcash.user.repository.CustomerRepository;
 import com.dreamcashgroup.dcash.user.service.CustomerService;
+import com.dreamcashgroup.dcash.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
-    private CustomerRepository customerRepository;
+    private UserService userService;
 
     @Autowired
-    private PasswordEncoder encoder;
+    private CustomerRepository customerRepository;
 
     /**
      * Créer un client sur le système
@@ -30,15 +33,19 @@ public class CustomerServiceImpl implements CustomerService {
      * @return
      */
     @Override
-    public Customer create(CustomerDto customerDto) {
-        // Créer un compte utilisateur pour ce client
-        Users user = new Users();
-        user.setUsername(customerDto.getEmail());
-        user.setPassword(encoder.encode(customerDto.getPassword()));
-        user.setActive(true);
+    @Transactional
+    public Customer create(CustomerDto customerDto) throws DCashDBItemAlreadyExistException {
+        // Créer un compte de connexion pour ce client
+        Users user = userService.create(customerDto.getEmail(), customerDto.getPassword());
 
-        // TODO
-        return null;
+        // Créer le client lui même
+        Customer customer = new Customer();
+        customer.setFirstName(customerDto.getFirstName());
+        customer.setLastName(customerDto.getLastName());
+        customer.setEmail(customerDto.getEmail());
+        customer.setPhone(customerDto.getPhone());
+        customer.setUser(user);
+        return save(customer);
     }
 
     /**
@@ -123,6 +130,17 @@ public class CustomerServiceImpl implements CustomerService {
      */
     @Override
     public Page<Customer> getCustomerPerPage(int pageNo, int pageSize) {
+        // TODO
         return null;
+    }
+
+    /**
+     * Récupérer la liste de tous les clients
+     *
+     * @return
+     */
+    @Override
+    public List<Customer> getAllCustomers() {
+        return customerRepository.findAll();
     }
 }

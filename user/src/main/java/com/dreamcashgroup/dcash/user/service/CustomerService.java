@@ -1,10 +1,12 @@
 package com.dreamcashgroup.dcash.user.service;
 
+import com.dreamcashgroup.dcash.common.exception.DCashDBItemAlreadyExistException;
 import com.dreamcashgroup.dcash.common.exception.DCashDBItemNotFoundException;
 import com.dreamcashgroup.dcash.model.entity.Customer;
 import com.dreamcashgroup.dcash.user.dto.CustomerDto;
 import org.springframework.data.domain.Page;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface CustomerService {
@@ -14,7 +16,7 @@ public interface CustomerService {
      * @param customerDto
      * @return
      */
-    Customer create(CustomerDto customerDto);
+    Customer create(CustomerDto customerDto) throws DCashDBItemAlreadyExistException;
 
     /**
      * Enregistrer un client
@@ -66,4 +68,10 @@ public interface CustomerService {
      * @return
      */
     Page<Customer> getCustomerPerPage(int pageNo, int pageSize);
+
+    /**
+     * Récupérer la liste de tous les clients
+     * @return
+     */
+    List<Customer> getAllCustomers();
 }

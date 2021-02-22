@@ -58,4 +58,13 @@ public class Users extends Model{
     public void removeRole(Roles role) {
         getRoles().remove(role);
     }
+
+    /**
+     * Vérifier si un utilisateur est un administrateur
+     * @return
+     */
+    public boolean isAdmin(){
+        return this.getRoles().stream()
+                .anyMatch(role -> role.getRoleName().equals("ADMIN"));
+    }
 }

@@ -6,23 +6,33 @@ import java.util.Collection;
 
 public class AuthResponse {
     private String accessToken;
-    private String username;
     private String refreshToken;
     private Long expiryDuration;
+    private boolean secondLoginRequired;
     private Collection<? extends GrantedAuthority> authorities;
 
-    public AuthResponse(String accessToken, String username, Collection<? extends GrantedAuthority> authorities) {
+    public AuthResponse(boolean secondLoginRequired) {
+        this.secondLoginRequired = secondLoginRequired;
+    }
+
+    public AuthResponse(String accessToken, Collection<? extends GrantedAuthority> authorities) {
         this.accessToken = accessToken;
-        this.username = username;
         this.authorities = authorities;
     }
 
-    public AuthResponse(String accessToken, String refreshToken, Long expiryDuration, String username, Collection<? extends GrantedAuthority> authorities) {
+    public AuthResponse(String accessToken, String refreshToken, Long expiryDuration, Collection<? extends GrantedAuthority> authorities) {
         this.accessToken = accessToken;
         this.refreshToken = refreshToken;
         this.expiryDuration = expiryDuration;
-        this.username = username;
         this.authorities = authorities;
+    }
+
+    public AuthResponse(String accessToken, String refreshToken, Long expiryDuration, Collection<? extends GrantedAuthority> authorities, boolean secondLoginRequired) {
+        this.accessToken = accessToken;
+        this.refreshToken = refreshToken;
+        this.expiryDuration = expiryDuration;
+        this.authorities = authorities;
+        this.secondLoginRequired = secondLoginRequired;
     }
 
     public String getAccessToken() {
@@ -35,14 +45,6 @@ public class AuthResponse {
 
     public Long getExpiryDuration() {
         return expiryDuration;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public Collection<? extends GrantedAuthority> getAuthorities() {

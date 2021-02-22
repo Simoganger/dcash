@@ -4,6 +4,7 @@ import com.dreamcashgroup.dcash.model.enums.EnumTokenStatus;
 import com.dreamcashgroup.dcash.model.enums.EnumTokenType;
 
 import javax.persistence.*;
+import java.time.Instant;
 import java.util.Date;
 
 @Entity
@@ -19,7 +20,7 @@ public class Token extends Model{
     private EnumTokenStatus status;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Date expireAt;
+    private Instant expireAt;
 
     @OneToOne(targetEntity = Users.class)
     private Users user;
@@ -48,11 +49,11 @@ public class Token extends Model{
         this.status = status;
     }
 
-    public Date getExpireAt() {
+    public Instant getExpireAt() {
         return expireAt;
     }
 
-    public void setExpireAt(Date expireAt) {
+    public void setExpireAt(Instant expireAt) {
         this.expireAt = expireAt;
     }
 
@@ -62,5 +63,10 @@ public class Token extends Model{
 
     public void setUser(Users user) {
         this.user = user;
+    }
+
+    // Vérification du token
+    public void setVerified() {
+        setStatus(EnumTokenStatus.VERIFIED);
     }
 }

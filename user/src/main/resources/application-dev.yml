@@ -33,3 +33,5 @@ app:
   init:
     admin-username: admin
     admin-password: admin
+  token:
+    login-code-duration: 86400
