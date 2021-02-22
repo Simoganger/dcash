@@ -25,8 +25,9 @@ export class AdminComponent implements OnInit {
       response =>{
         let status = response.status
         if(status === 'SUCCESS'){
-          let fetchUser = response.data as User
-          this.currentUser = fetchUser
+          this.currentUser = response.data as User
+          if(isDevMode)
+            console.log(this.currentUser)
         }
       }, error =>{
         if(isDevMode)
